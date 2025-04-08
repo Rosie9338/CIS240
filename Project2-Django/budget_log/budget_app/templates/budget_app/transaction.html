@@ -1,0 +1,11 @@
+{% extends "budget_app/base.html" %}
+
+{% block content %}
+<h1>{{ transaction }}</h1>
+<ul>
+    {% for entry in entries %}
+    <li>{{ entry.date_added }} - {{ entry.merchant }}: ${{ entry.transaction_amount }}<br>
+        {{ entry.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
