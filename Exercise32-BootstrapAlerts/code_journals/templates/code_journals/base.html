@@ -1,0 +1,52 @@
+{% load django_bootstrap5 %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Code Journals</title>
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary mb-4 border" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'code_journals:index'%}">Code Journals</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#navbarColor01" aria-controls="navbarColor01" 
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'code_journals:topics'%}">Topics</a>
+              </li>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Other Menu Items</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'code_journals:new_topic' %}">Add a New Topic</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'code_journals:bar_chart' %}">Visuals</a>
+              </div>
+            </li>
+            </ul>
+          </div>
+        </div>
+    </nav>    
+    <main role="main" class="container">
+        <div class="pb-2 mb-2 border-bottom">
+        {% block page_header %}{% endblock page_header %}
+        </div>
+        <div>
+          {% block content %}{% endblock content %}
+        </div>
+    </main>
+  
+</body>
+</html>

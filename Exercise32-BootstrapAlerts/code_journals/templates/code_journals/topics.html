@@ -1,0 +1,21 @@
+{% extends "code_journals/base.html" %}
+
+{% block content %}
+
+<p>Topics</p>
+
+<ul>
+    {% for topic in topics %}
+        <li>
+            <a href="{% url 'code_journals:topic' topic.id %}">{{ topic }}</a>
+            <a href="{% url 'code_journals:delete' topic.id %}">delete</a>
+        </li>
+    {% empty %}
+        <li>No topics have been added yet.</li>
+    {% endfor %}
+
+</ul>
+
+<a href="{% url 'code_journals:new_topic' %}">Add a new topic:</a>
+
+{% endblock content %}
